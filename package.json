@@ -1,15 +1,11 @@
 {
-  "name": "ffi-napi",
-  "version": "4.0.3",
+  "name": "electron-ffi-napi",
+  "version": "4.0.4",
   "license": "MIT",
-  "author": "Anna Henningsen <anna@addaleax.net>",
-  "contributors": [
-    "Rick Branson <rick@diodeware.com>",
-    "Nathan Rajlich <nathan@tootallnate.net>",
-    "Gabor Mezo <gabor.mezo@outlook.com>"
-  ],
-  "description": "A foreign function interface (FFI) for Node.js, N-API style",
+  "author": "Learn  Chen <learner.chen@icloud.com>",
+  "description": "A foreign function interface (FFI) for Electron App, N-API style. Folked  from node-ffi-napi.",
   "keywords": [
+    "electron",
     "foreign",
     "function",
     "interface",
@@ -20,38 +16,42 @@
     "napi",
     "stable"
   ],
-  "homepage": "http://github.com/node-ffi-napi/node-ffi-napi",
+  "homepage": "https://github.com/learnerchen-forever/electron-ffi-napi",
   "engines": {
-    "node": ">=10"
+    "node": ">=18"
   },
   "main": "./lib/ffi",
   "dependencies": {
-    "debug": "^4.1.1",
-    "get-uv-event-loop-napi-h": "^1.0.5",
-    "node-addon-api": "^3.0.0",
-    "node-gyp-build": "^4.2.1",
-    "ref-napi": "^2.0.1 || ^3.0.2",
-    "ref-struct-di": "^1.1.0"
+    "debug": "^4.4.0",
+    "node-addon-api": "^8.3.1",
+    "node-gyp-build": "^4.8.4",
+    "ref-napi": "^3.0.3",
+    "ref-struct-di": "^1.1.1"
   },
   "devDependencies": {
-    "fs-extra": "^9.0.0",
-    "mocha": "^7.1.1",
-    "nyc": "^15.0.0",
-    "prebuildify": "^4.0.0",
+    "fs-extra": "^11.3.0",
+    "glob": "^11.0.2",
+    "mocha": "^11.2.2",
+    "nyc": "^17.1.0",
+    "prebuildify": "^6.0.1",
     "prebuildify-ci": "^1.0.5",
-    "ref-array-di": "^1.2.1"
+    "ref-array-di": "^1.2.2",
+    "rimraf": "^6.0.1",
+    "uuid": "^11.1.0"
   },
   "scripts": {
     "install": "node-gyp-build",
-    "prebuild": "prebuildify --napi --tag-armv --tag-uv",
-    "prepack": "prebuildify-ci download && ([ $(ls prebuilds | wc -l) = '5' ] || (echo 'Some prebuilds are missing'; exit 1))",
+    "prebuild": "prebuildify --napi",
+    "prepack2": "prebuildify-ci download && ([ $(ls prebuilds | wc -l) = '5' ] || (echo 'Some prebuilds are missing'; exit 1))",
+    "prepack1": "prebuildify-ci download && ([ $(ls prebuilds | wc -l) = 5 ] || (echo 'Some prebuilds are missing'; exit 1))",
+    "prepack3": "prebuildify-ci download ",
     "test": "node-gyp rebuild --directory test && nyc mocha --expose-gc --reporter spec"
   },
   "repository": {
     "type": "git",
-    "url": "http://github.com/node-ffi-napi/node-ffi-napi.git"
+    "url": "https://github.com/learnerchen-forever/electron-ffi-napi.git"
   },
   "bugs": {
-    "url": "http://github.com/node-ffi-napi/node-ffi-napi/issues"
+    "url": "https://github.com/learnerchen-forever/electron-ffi-napi/issues"
   }
 }
